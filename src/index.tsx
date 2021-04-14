@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './pages/index'
+import MainPage from './pages/index';
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Index />
+    <MainPage/>
   </React.StrictMode>,
   document.getElementById('root')
 );

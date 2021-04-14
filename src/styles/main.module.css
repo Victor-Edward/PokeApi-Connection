@@ -5,5 +5,10 @@
 }
 
 .container{
-    margin: 10;
+    margin: 8em;
+}
+
+.pokemon{
+    display: flex;
+    flex-direction: column;
 }

@@ -1,9 +1,9 @@
-import react from 'React'
+import React, { useState } from 'react'
 import { pokemon } from '../interfaces/interface'
 import styles from '../styles/main.module.css'
 import { getpokemon } from '../interfaces/api'
 
-const Index = () => {
+const MainPage = () => {
     const bgcolors = {
         normal: "#A8A878",
         fighting: "#C03028",
@@ -25,11 +25,48 @@ const Index = () => {
         psychic: "#F85888",
     }
 
+    const [displayPokemon, setDisplayPokemon] = useState <pokemon> ()
+
+    const load = async (inputPokemon: string) => {
+        const loadData = await getpokemon(inputPokemon)
+        setDisplayPokemon(loadData)
+    }
+
     return (
-        <div>
-            <h1>Página incial</h1>
+        <div className={styles.container}>
+            <div className={styles.greetings}>
+                <h1>Seja bem vindo ao PokeApi, para começar, digite um pokemon e pressione Enter</h1>
+                <input onKeyPress={(e:any) => {if (e.code === "Enter") {load(e.target.value)}}} type="text"/>
+            </div>
+            <div className={styles.pokemon}>
+                <div className={styles.heading}>
+                    <p>{displayPokemon?.name}</p>
+                    <p>Id: {displayPokemon?.id}</p>
+                </div>
+                <div className={styles.image}>
+                    <img src={displayPokemon?.sprites.front_default} alt=""/>
+                    <img src={displayPokemon?.sprites.back_default} alt=""/>
+                </div>
+                <div className={styles.text}>
+                    <div className={styles.types}>
+                        <p id={styles.typesHeading}>Tipos</p>
+                        {displayPokemon?.types ? displayPokemon.types.map(type => {return (
+                            <p>{type.type.name}</p>
+                        )}):null}
+                    </div>
+                    <div className={styles.stats}>
+                        <p id={styles.statsHeading}>Stats</p>
+                        <p><strong>Weight: </strong> {displayPokemon?.weight} Kg</p>
+                        <p><strong>Height: </strong> {displayPokemon?.height} cm</p>
+                        {displayPokemon?.stats ? displayPokemon.stats.map(stats => {return (
+                            <p><strong>{stats.stat.name}: </strong>{stats.base_stat}</p>
+                        )}):null}
+                    </div>
+                </div>
+            </div>
+
         </div>
     )
 }
 
-export default Index
+export default MainPage
