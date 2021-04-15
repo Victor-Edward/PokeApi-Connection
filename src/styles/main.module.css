@@ -5,10 +5,16 @@
 }
 
 .container{
-    margin: 8em;
+    margin: 6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .pokemon{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

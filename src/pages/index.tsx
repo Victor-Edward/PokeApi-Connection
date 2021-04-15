@@ -1,28 +1,47 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { pokemon } from '../interfaces/interface'
 import styles from '../styles/main.module.css'
 import { getpokemon } from '../interfaces/api'
 
 const MainPage = () => {
-    const bgcolors = {
-        normal: "#A8A878",
-        fighting: "#C03028",
-        flying: "#A890F0",
-        water: "#6890F0",
-        fire: "#F08030",
-        electric: "#F8D030",
-        ice: "#98D8D8",
-        grass: "#78C850",
-        bug: "#A8B820",
-        poison: "#A040A0",
-        rock: "#B8A038",
-        ground: "#E0C068",
-        steel: "#B8B8D0",
-        dragon: "#7038F8",
-        ghost: "#705898",
-        dark: "#705848",
-        fairy: "#EE99AC",
-        psychic: "#F85888",
+    
+    
+
+    const changeColor = () => {
+        const body = document.body
+        
+        const bgcolors:any = {
+            normal: "#A8A878",
+            fighting: "#C03028",
+            flying: "#A890F0",
+            water: "#6890F0",
+            fire: "#F08030",
+            electric: "#F8D030",
+            ice: "#98D8D8",
+            grass: "#78C850",
+            bug: "#A8B820",
+            poison: "#A040A0",
+            rock: "#B8A038",
+            ground: "#E0C068",
+            steel: "#B8B8D0",
+            dragon: "#7038F8",
+            ghost: "#705898",
+            dark: "#705848",
+            fairy: "#EE99AC",
+            psychic: "#F85888",
+        }
+
+        if (displayPokemon) {
+            const types = displayPokemon.types.map(type => bgcolors[type.type.name])
+            if (types.length == 1) {
+                body.style.backgroundImage = `linear-gradient(to bottom right, ${types.join(',')}, ${types.join(',')})`
+            } else {
+                body.style.backgroundImage = `linear-gradient(to bottom right, ${types.join(',')})`
+            }
+            
+        }
+            
+        
     }
 
     const [displayPokemon, setDisplayPokemon] = useState <pokemon> ()
@@ -30,7 +49,10 @@ const MainPage = () => {
     const load = async (inputPokemon: string) => {
         const loadData = await getpokemon(inputPokemon)
         setDisplayPokemon(loadData)
+        
     }
+
+    useEffect(changeColor, [displayPokemon])
 
     return (
         <div className={styles.container}>
@@ -51,13 +73,13 @@ const MainPage = () => {
                     <div className={styles.types}>
                         <p id={styles.typesHeading}>Tipos</p>
                         {displayPokemon?.types ? displayPokemon.types.map(type => {return (
-                            <p>{type.type.name}</p>
+                            <p className="pokemonType">{type.type.name}</p>
                         )}):null}
                     </div>
                     <div className={styles.stats}>
                         <p id={styles.statsHeading}>Stats</p>
-                        <p><strong>Weight: </strong> {displayPokemon?.weight} Kg</p>
-                        <p><strong>Height: </strong> {displayPokemon?.height} cm</p>
+                        <p><strong>Weight: </strong> {displayPokemon ? displayPokemon.weight / 10 : null} Kg</p>
+                        <p><strong>Height: </strong> {displayPokemon ? displayPokemon.height / 10 : null} m</p>
                         {displayPokemon?.stats ? displayPokemon.stats.map(stats => {return (
                             <p><strong>{stats.stat.name}: </strong>{stats.base_stat}</p>
                         )}):null}
