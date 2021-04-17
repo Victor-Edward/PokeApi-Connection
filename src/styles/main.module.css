@@ -4,6 +4,18 @@
     box-sizing: 0;
 }
 
+@media (max-width: 1080px){
+    html {
+        font-size: 93.75%;
+    }
+}
+
+@media (max-width: 720px){
+    html {
+        font-size: 87.5%;
+    }
+}
+
 html{
     width: 100%;
     height: 100%;
@@ -15,7 +27,7 @@ body{
 }
 
 .container{
-    margin: 2em 4em;
+    margin: 2em 2em;
 }
 
 .greetings{
@@ -29,7 +41,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 35%;
+    width: 18em;
 
     margin: auto;
     padding: 1em;
@@ -93,6 +105,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 18em;
 }
 
 .stats >p {
@@ -101,8 +115,8 @@ body{
 
 .statsContent{
     display: grid;
-    grid-template-columns: 200px 200px;
-    justify-content: space-between;
+    grid-template-columns: 9em 9em;
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
 }
