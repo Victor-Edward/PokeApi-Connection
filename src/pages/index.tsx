@@ -47,6 +47,8 @@ const MainPage = () => {
             psychic: "#F85888",
         }
 
+        
+
         if (displayPokemon) {
             const types = displayPokemon.types.map(type => bgcolors[type.type.name])
             if (types.length === 1) {
