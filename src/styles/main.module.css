@@ -87,6 +87,7 @@ body{
     justify-content: center;
     width: auto;
     height: 1.5em;
+    padding: 0 0.5em;
 }
 
 .types >p {
