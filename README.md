@@ -4,7 +4,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Dependencies
 yarn - 1.22.5
-axios - 0.21.1
 
 ## Running the Project
 
