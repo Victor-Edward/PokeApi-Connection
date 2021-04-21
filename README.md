@@ -12,6 +12,10 @@ axios - 0.21.1
  > Install dependeces
  > Open the console and type yarn start
  > Go to http://localhost:3000
+ 
+## Example image
+
+<img src="https://github.com/Victor-Edward/PokeApi-Connection/blob/main/src/assets/images/example/example.png?raw=true" alt="Image example"/>
 
 ## Learn More
 
