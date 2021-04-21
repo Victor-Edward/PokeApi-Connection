@@ -7,10 +7,10 @@ yarn - 1.22.5
 
 ## Running the Project
 
- Clone this repository
- Install dependeces
- Open the console and type yarn start
- Go to http://localhost:3000
+ Clone this repository <br>
+ Install dependeces <br>
+ Open the console and type yarn start <br>
+ Go to http://localhost:3000 <br>
  
 ## Example image
 
